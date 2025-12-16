@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    database: delivery_analytics
+    schema: raw
+    tables:
+      - name: users
+      - name: couriers
+      - name: shipments
+      - name: shipment_status
+      - name: courier_assignments

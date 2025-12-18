@@ -8,17 +8,12 @@
     as
   
   (
-    with fct as (
-    select *
-    from "delivery_analytics"."analytics"."fct_shipments"
-)
-
-select
+    select
     courier_id,
     count(distinct shipment_id) as total_shipments,
-    sum(case when status = 'delivered' then 1 else 0 end) as delivered_shipments,
-    AVG(EXTRACT(EPOCH FROM (expected_delivery_date - shipment_date)) / 86400) AS avg_delivery_time
-from fct
+    sum(case when late_delivery = false then 1 else 0 end) as on_time_shipments,
+    sum(case when late_delivery = true then 1 else 0 end) as late_shipments
+from "delivery_analytics"."analytics"."fct_shipments"
 group by courier_id
   );
   

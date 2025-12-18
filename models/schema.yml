@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fct_shipments
+    columns:
+      - name: shipment_id
+        tests:
+          - not_null
+          - unique
+
+      - name: courier_id
+        tests:
+          - not_null
+
+      - name: price
+        tests:
+          - not_null
+
+      - name: late_delivery
+        tests:
+          - accepted_values:
+              values: [true, false]

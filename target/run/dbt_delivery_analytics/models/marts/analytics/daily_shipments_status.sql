@@ -8,17 +8,16 @@
     as
   
   (
-    with fct as (
-    select *
-    from "delivery_analytics"."analytics"."fct_shipments"
-)
-
-select
-    shipment_date,
+    select
+    status_timestamp::date as shipment_date,
     status,
     count(*) as shipments_count
-from fct
-group by shipment_date, status
-order by shipment_date, status
+from "delivery_analytics"."analytics"."stg_shipment_status"
+group by
+    status_timestamp::date,
+    status
+order by
+    shipment_date,
+    status
   );
   

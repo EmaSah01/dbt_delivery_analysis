@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: fct_shipments
+    description: "Fact table of shipments with late_delivery metric"
     columns:
       - name: shipment_id
         tests:
@@ -19,4 +20,25 @@ models:
       - name: late_delivery
         tests:
           - accepted_values:
-              values: [true, false]
+              arguments:
+                values: [true, false]
+
+  - name: shipments_by_hour_day
+    description: "Number of shipments aggregated by day of week and shipment hour with on-time and late deliveries"
+    columns:
+      - name: day_of_week
+        tests:
+          - not_null
+      - name: shipment_hour
+        tests:
+          - not_null
+
+  - name: shipments_by_city_vehicle
+    description: "Number of shipments aggregated by city and vehicle type with on-time and late deliveries"
+    columns:
+      - name: city
+        tests:
+          - not_null
+      - name: vehicle_type
+        tests:
+          - not_null

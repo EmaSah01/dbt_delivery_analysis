@@ -18,30 +18,48 @@ This project is a data analytics system built using **dbt (Data Build Tool)** an
 - **models/schema.yml**  
   DBT tests and documentation for model columns (not_null, unique, accepted_values).
 
-## Key Metrics
+Key Metrics
+SLA Metrics
 
-1. **SLA Metrics**  
-   - Late deliveries per shipment
-   - Delivery delay in days
-   - Helps monitor reliability of couriers
+Late deliveries per shipment
 
-2. **Courier Performance**  
-   - Total shipments per courier
-   - On-time vs late deliveries
-   - Average delivery duration
+Delivery delay in days
 
-3. **Revenue Analytics**  
-   - Daily and monthly revenue
-   - Revenue per courier
-   - Identifies most profitable periods and couriers
+Helps monitor reliability of couriers
 
-4. **Operational Status**  
-   - Daily shipment count per status
-   - Tracks operational workflow
+Courier Performance
 
-## Running the Project
+Total shipments per courier
 
-1. Install dependencies:
-```bash
+On-time vs late deliveries
+
+Average delivery duration
+
+Revenue Analytics
+
+Daily and monthly revenue
+
+Revenue per courier
+
+Identifies most profitable periods and couriers
+
+Operational Status
+
+Daily shipment count per status
+
+Tracks operational workflow
+
+Running the Project
+1. Set up virtual environment
+python -m venv venv
+source venv/bin/activate       # Linux / macOS
+venv\Scripts\Activate.ps1      # Windows PowerShell
+
+2. Install dependencies
 pip install -r requirements.txt
 
+3. Run dbt models
+dbt run --select marts.analytics
+
+4. Run Streamlit dashboard
+streamlit run streamlit_app.py

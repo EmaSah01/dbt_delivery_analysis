@@ -1,11 +1,11 @@
+-- stg_couriers.sql
 with source as (
-    select *
+    select
+        courier_id,
+        name,
+        vehicle_type,
+        city
     from {{ source('raw', 'couriers') }}
 )
 
-select
-    courier_id,
-    user_id,
-    vehicle_type,
-    city
-from source
+select * from source

@@ -12,6 +12,7 @@ customers as (
 
 ),
 
+
 couriers as (
 
     select *

@@ -21,5 +21,4 @@ order by courier_id, shipment_date
 
 Daily load po kuriru
 
-
 */
